@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cassidi Edwards – Portfolio</title>
+  <meta name="description" content="Portfolio of Cassidi Edwards – IT Professional & Software Engineer. iOS, web apps, automation, and cloud-backed products." />
+
+  <style>
+    :root{
+      --primary: #6C63FF;
+      --secondary: #FFB703;
+      --background: #F8F9FF;
+      --card: #FFFFFF;
+      --text: #1F2937;
+      --muted: #6B7280;
+      --border: rgba(31, 41, 55, 0.10);
+      --shadow: 0 18px 50px rgba(17, 24, 39, 0.10);
+      --shadowSoft: 0 10px 25px rgba(17, 24, 39, 0.08);
+      --radius: 18px;
+      --radius2: 24px;
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, var(--background), #ffffff);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* Top announcement banner (optional) */
+    .banner{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(90deg, rgba(108,99,255,0.12), rgba(255,183,3,0.18));
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+    .banner-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 10px 18px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(108,99,255,0.10);
+      border: 1px solid rgba(108,99,255,0.18);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .banner-actions{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .link{
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Navbar */
+    .nav{
+      position: sticky;
+      top: 48px; /* sits beneath banner */
+      z-index: 40;
+      background: rgba(248,249,255,0.72);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .logo{
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(108,99,255,0.95), rgba(255,183,3,0.95));
+      box-shadow: var(--shadowSoft);
+      border: 1px solid rgba(255,255,255,0.55);
+    }
+    .brand small{
+      display: block;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0;
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+
+    .nav-links{
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .nav-links a{
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 700;
+      color: rgba(31,41,55,0.88);
+    }
+    .nav-links a:hover{
+      background: rgba(108,99,255,0.08);
+      color: var(--text);
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 800;
+      border: 1px solid rgba(108,99,255,0.22);
+      background: rgba(108,99,255,0.10);
+      color: var(--text);
+      box-shadow: var(--shadowSoft);
+      transition: transform 120ms ease, box-shadow 120ms ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(108,99,255,0.95), rgba(108,99,255,0.78));
+      color: white;
+      border-color: rgba(108,99,255,0.35);
+    }
+    .btn.secondary{
+      background: rgba(255,183,3,0.16);
+      border-color: rgba(255,183,3,0.35);
+    }
+
+    .menu-btn{
+      display: none;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.75);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    /* Layout */
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+    .section{
+      padding: 80px 0;
+    }
+
+    /* Hero */
+    .hero{
+      padding: 76px 0 40px;
+    }
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    .hero-card{
+      background: rgba(255,255,255,0.85);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius2);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card:before{
+      content:"";
+      position: absolute;
+      inset: -120px -120px auto auto;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle at center, rgba(108,99,255,0.22), transparent 60%);
+      transform: rotate(18deg);
+    }
+    .kicker{
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(108,99,255,0.18);
+      background: rgba(108,99,255,0.10);
+      font-weight: 800;
+      color: rgba(31,41,55,0.88);
+      margin-bottom: 14px;
+    }
+    h1{
+      margin: 0 0 10px 0;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+    .subtitle{
+      margin: 0 0 18px 0;
+      color: rgba(31,41,55,0.80);
+      font-size: 1.1rem;
+      max-width: 58ch;
+    }
+    .hero-actions{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .meta-row{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .tag{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.7);
+      color: rgba(31,41,55,0.78);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .side-card{
+      background: rgba(255,255,255,0.85);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadowSoft);
+      border-radius: var(--radius2);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .side-title{
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .side-title h3{
+      margin: 0;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+    }
+    .muted{ color: var(--muted); }
+    .list{
+      display: grid;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .list-item{
+      padding: 12px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.65);
+    }
+    .list-item b{ display: block; margin-bottom: 4px; }
+    .hr{
+      height: 1px;
+      background: var(--border);
+      margin: 8px 0;
+    }
+
+    /* Cards grid */
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .card{
+      grid-column: span 6;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadowSoft);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:before{
+      content:"";
+      position: absolute;
+      inset: -90px auto auto -90px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle at center, rgba(255,183,3,0.20), transparent 62%);
+      transform: rotate(-10deg);
+    }
+    .card h3{
+      margin: 0 0 8px 0;
+      letter-spacing: -0.02em;
+    }
+    .card p{
+      margin: 0 0 14px 0;
+      color: rgba(31,41,55,0.82);
+    }
+    .card .chips{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .chip{
+      font-size: 0.9rem;
+      font-weight: 800;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(248,249,255,0.75);
+      color: rgba(31,41,55,0.76);
+    }
+    .card .actions{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Section headings */
+    .section-head{
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .section-head h2{
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: -0.02em;
+    }
+    .section-head p{
+      margin: 0;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+
+    /* About + Skills */
+    .about{
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .about .card{ grid-column: auto; }
+    .skills{
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .skill-row{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.65);
+      font-weight: 800;
+    }
+    .skill-row span{
+      color: rgba(31,41,55,0.78);
+      font-weight: 700;
+    }
+
+    /* Contact */
+    .contact{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .contact form{
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .field{
+      display: grid;
+      gap: 6px;
+    }
+    label{
+      font-weight: 800;
+      color: rgba(31,41,55,0.85);
+      font-size: 0.95rem;
+    }
+    input, textarea{
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.85);
+      font: inherit;
+      outline: none;
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+    input:focus, textarea:focus{
+      border-color: rgba(108,99,255,0.45);
+      box-shadow: 0 0 0 4px rgba(108,99,255,0.12);
+    }
+    .fine{
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer{
+      padding: 34px 0 60px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Mobile */
+    @media (max-width: 900px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .about{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      .card{ grid-column: span 12; }
+      .nav-links{ display: none; }
+      .menu-btn{ display: inline-flex; align-items: center; gap: 8px; }
+      .nav.open .nav-links{
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        width: 100%;
+        padding: 12px 0 0;
+      }
+      .nav.open .nav-inner{ align-items: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Announcement banner -->
+  <div class="banner">
+    <div class="banner-inner">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <span class="pill">✨ Available for: iOS • Web • Automation</span>
+        <span class="muted">Currently building: Cloud-backed iOS apps + modern web tooling.</span>
+      </div>
+      <div class="banner-actions">
+        <a class="link" href="#projects">View Projects →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="nav" id="siteNav">
+    <div class="nav-inner container">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          Cassidi Edwards
+          <small>IT Professional • Software Engineer</small>
+        </div>
+      </div>
+
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">
+        ☰ Menu
+      </button>
+
+      <div class="nav-links" id="navLinks" role="navigation" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a class="btn primary" href="#contact">Let’s Connect</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="kicker">📖 Building products that feel fun — and ship clean.</div>
+          <h1>Hi, I’m Cassidi — I build cloud-backed apps & polished systems.</h1>
+          <p class="subtitle">
+            I’m an IT professional and student focused on software engineering: iOS apps with SwiftUI/CloudKit,
+            web applications that improve workflows, and automations that save real time.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">See My Work</a>
+            <a class="btn secondary" href="#contact">Contact Me</a>
+            <!-- Replace with your real links -->
+            <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+
+          <div class="meta-row">
+            <span class="tag">SwiftUI • SwiftData • CloudKit</span>
+            <span class="tag">ASP.NET Core • MVC • PDFs</span>
+            <span class="tag">PowerShell • Power Automate</span>
+            <span class="tag">UI/UX • Clean Architecture</span>
+          </div>
+        </div>
+
+        <aside class="side-card">
+          <div class="side-title">
+            <h3>Highlights</h3>
+            <span class="muted">Quick snapshot</span>
+          </div>
+
+          <div class="list">
+            <div class="list-item">
+              <b>📱 The Quote Book App</b>
+              CloudKit-backed iOS app for saving + sharing quotes and playing “Who Said That?”
+            </div>
+            <div class="list-item">
+              <b>🧩 Workflow Web Apps</b>
+              Forms, authentication, PDF generation, and email automation for real-world processes.
+            </div>
+            <div class="list-item">
+              <b>⚙️ Automation & Ops</b>
+              PowerShell/Power Automate scripts that reduce repetitive workload and improve reliability.
+            </div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="list-item">
+            <b>Currently learning</b>
+            <span class="muted">Always leveling up: testing, architecture, and shipping smoother releases.</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <!-- Projects -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Projects</h2>
+          <p>Some favorites — built for real people, real workflows, and fun game nights.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <!-- Project 1 -->
+        <article class="card">
+          <h3>📖 The Quote Book App (iOS)</h3>
+          <p>
+            Save quotes, share them to a feed with friends, and play a timed “Who Said That?” guessing game.
+            Built with SwiftUI + CloudKit for private/shared data.
+          </p>
+          <div class="chips">
+            <span class="chip">SwiftUI</span>
+            <span class="chip">SwiftData</span>
+            <span class="chip">CloudKit</span>
+            <span class="chip">OSLog</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#" target="_blank" rel="noreferrer">Live Demo</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Code</a>
+            <a class="btn secondary" href="#contact">Request TestFlight Invite</a>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card">
+          <h3>🧾 PDF Form Automation (ASP.NET Core MVC)</h3>
+          <p>
+            Web application that generates PDF forms and routes email delivery based on request type,
+            with shared helpers and reCAPTCHA protection.
+          </p>
+          <div class="chips">
+            <span class="chip">ASP.NET Core</span>
+            <span class="chip">MVC</span>
+            <span class="chip">PDF Generation</span>
+            <span class="chip">Email</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#" target="_blank" rel="noreferrer">Case Study</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card">
+          <h3>🐾 Kitty Ping Pong (Arduino)</h3>
+          <p>
+            Arduino Uno R4 Minima project inspired by family ping-pong nights — wiring, LEDs, button inputs,
+            display outputs, and lots of C/C++ debugging.
+          </p>
+          <div class="chips">
+            <span class="chip">Arduino</span>
+            <span class="chip">C/C++</span>
+            <span class="chip">Hardware</span>
+            <span class="chip">Debugging</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#" target="_blank" rel="noreferrer">Build Notes</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="card">
+          <h3>📚 Knowledge Base + AI Search</h3>
+          <p>
+            A structured knowledge base system designed to organize information and surface answers quickly,
+            with AI-assisted retrieval concepts and clean information architecture.
+          </p>
+          <div class="chips">
+            <span class="chip">Information Architecture</span>
+            <span class="chip">Search</span>
+            <span class="chip">Automation</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#" target="_blank" rel="noreferrer">Overview</a>
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Docs</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About + Skills -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>About</h2>
+          <p>IT + software engineering with a love for building clean, friendly experiences.</p>
+        </div>
+      </div>
+
+      <div class="about">
+        <div class="card">
+          <h3>What I do</h3>
+          <p>
+            I build applications that solve real problems — from cloud-synced iOS apps to web systems that
+            streamline business workflows. I care about reliability, clean architecture, and the small UX details
+            that make products feel “finished.”
+          </p>
+          <p class="muted">
+            Outside of shipping features, I’m always learning — improving my testing habits, tightening up architecture,
+            and pushing projects through real release pipelines (TestFlight/App Store Connect).
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn secondary" href="#contact">Work With Me</a>
+          </div>
+        </div>
+
+        <div class="card" id="skills">
+          <h3>Top skills</h3>
+          <p class="muted">A mix of engineering, operations, and product-building strengths.</p>
+
+          <div class="skills">
+            <div class="skill-row">iOS Development <span>SwiftUI • SwiftData • CloudKit</span></div>
+            <div class="skill-row">Web Applications <span>ASP.NET Core • MVC • HTML/CSS</span></div>
+            <div class="skill-row">Automation <span>PowerShell • Power Automate • Scripting</span></div>
+            <div class="skill-row">Systems Thinking <span>Architecture • Reliability • UX</span></div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="list-item">
+            <b>Always learning</b>
+            <span class="muted">I’m continuously sharpening my skills through hands-on builds, feedback loops, and shipping real projects end-to-end.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section" id="experience">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Experience</h2>
+          <p>Show what you’ve done — this is written to be easy to customize fast.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card" style="grid-column: span 12;">
+          <h3>IT Professional • Software Engineering Focus</h3>
+          <p class="muted">Add your company/school details here (or keep it general).</p>
+          <div class="chips">
+            <span class="chip">Agile / Scrum</span>
+            <span class="chip">System Maintenance</span>
+            <span class="chip">Automation</span>
+            <span class="chip">App Development</span>
+          </div>
+          <p>
+            • Built and maintained user-facing systems with a focus on reliability and usability.<br/>
+            • Automated routine tasks to reduce manual workload and improve consistency.<br/>
+            • Developed apps and tools that connect teams to information faster and reduce friction.
+          </p>
+          <div class="actions">
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Resume (PDF)</a>
+            <a class="btn secondary" href="#contact">Ask for References</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p>Want to collaborate, test The Quote Book App, or talk cloud-backed apps? Send a message.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="card">
+          <h3>Quick links</h3>
+          <p class="muted">Replace these with your real profiles.</p>
+          <div class="list">
+            <div class="list-item"><b>Email</b><span class="muted">yourname@email.com</span></div>
+            <div class="list-item"><b>GitHub</b><span class="muted">github.com/yourhandle</span></div>
+            <div class="list-item"><b>LinkedIn</b><span class="muted">linkedin.com/in/yourhandle</span></div>
+          </div>
+          <div class="hr"></div>
+          <p class="fine">
+            Tip: If you don’t want a contact form, delete the form on the right and keep just links.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Send a message</h3>
+          <p class="muted">This uses your email app (no backend needed).</p>
+
+          <!-- Mailto form: opens the user's email client -->
+          <form id="contactForm">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" autocomplete="name" />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" placeholder="you@example.com" autocomplete="email" />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell me what you’re building (or what you want to test!)"></textarea>
+            </div>
+            <button class="btn primary" type="submit">Send Email</button>
+            <p class="fine">No data is stored on this site — it just opens your email client with a pre-filled message.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="hr" style="margin: 0 0 18px;"></div>
+      <div>© <span id="year"></span> Cassidi Edwards • Built with HTML + CSS • Styled like The Quote Book beta site ✨</div>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const nav = document.getElementById("siteNav");
+    const btn = document.getElementById("menuBtn");
+    btn?.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      btn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Contact form -> mailto (no backend)
+    const form = document.getElementById("contactForm");
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const subject = encodeURIComponent(`Portfolio message from ${name || "Someone"}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n`
+      );
+
+      // Replace with your real email:
+      const to = "yourname@email.com";
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
