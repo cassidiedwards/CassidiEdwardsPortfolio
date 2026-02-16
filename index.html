@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cassidi Edwards – Portfolio</title>
-  <meta name="description" content="Portfolio of Cassidi Edwards – IT Professional & Application Analyst. iOS, web apps, automation, on-prem and cloud-backed products." />
+  <meta name="description" content="Portfolio of Cassidi Edwards – software-focused IT professional building iOS apps, workflow-driven systems, automation, and integrated on-prem + cloud solutions." />
 
   <style>
     :root{
@@ -126,15 +126,15 @@
     /* Links area is flexible and right-aligned */
     .nav-links{
       flex: 1 1 auto;
-      min-width: 0;                  /* key for flex shrink */
+      min-width: 0;
       display: flex;
       align-items: center;
       justify-content: flex-end;
       gap: 10px;
-      flex-wrap: wrap;               /* prevents overlap on medium widths */
+      flex-wrap: wrap;
     }
     .nav-links a{
-      padding: 8px 10px;             /* slightly smaller so it fits */
+      padding: 8px 10px;
       border-radius: 12px;
       font-weight: 700;
       color: rgba(31,41,55,0.88);
@@ -150,7 +150,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 10px 14px;            /* slightly smaller (nav-friendly) */
+      padding: 10px 14px;
       border-radius: 14px;
       font-weight: 800;
       border: 1px solid rgba(108,99,255,0.22);
@@ -257,6 +257,7 @@
       gap: 10px;
       flex-wrap: wrap;
       margin-top: 16px;
+      align-items: center;
     }
     .tag{
       display: inline-flex;
@@ -269,6 +270,7 @@
       color: rgba(31,41,55,0.78);
       font-weight: 700;
       font-size: 0.95rem;
+      line-height: 1;
     }
 
     .side-card{
@@ -397,10 +399,10 @@
       gap: 10px;
       margin-top: 10px;
     }
-    .skill-row{
-      display: flex;
+    .skill-row {
+      display: grid;
+      grid-template-columns: 260px 1fr;
       align-items: center;
-      justify-content: space-between;
       gap: 12px;
       padding: 12px 12px;
       border-radius: var(--radius);
@@ -408,10 +410,18 @@
       background: rgba(255,255,255,0.65);
       font-weight: 800;
     }
-    .skill-row span{
-      color: rgba(31,41,55,0.78);
+    .skill-row span {
       font-weight: 700;
+      color: rgba(31,41,55,0.78);
     }
+
+    /* Bullet lists (replaces <br/> bullets) */
+    .bullets{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: rgba(31,41,55,0.82);
+    }
+    .bullets li{ margin: 6px 0; }
 
     /* Contact */
     .contact{
@@ -477,8 +487,8 @@
       justify-content: center;
     }
     .profile-image img {
-      width: 260px;
-      height: 260px;
+      width: 350px;
+      height: 350px;
       object-fit: cover;
       border-radius: 50%;
       border: 4px solid rgba(108, 99, 255, 0.25);
@@ -488,6 +498,21 @@
     .profile-image img:hover {
       transform: translateY(-3px);
     }
+    .banner-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .app-icon{
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 8px 18px rgba(17,24,39,0.12);
+      border: 1px solid rgba(255,255,255,0.7);
+    }
+
 
     /* Mobile */
     @media (max-width: 980px){
@@ -495,6 +520,7 @@
       .about{ grid-template-columns: 1fr; }
       .contact{ grid-template-columns: 1fr; }
       .card{ grid-column: span 12; }
+      .skill-row { grid-template-columns: 1fr; }
 
       /* collapse nav into menu */
       .nav-links{ display: none; }
@@ -522,22 +548,28 @@
         padding: 56px 0 28px;
       }
     }
+
+    @media (min-width: 700px){
+  .app-icon{ width: 32px; height: 32px; border-radius: 10px; }
+    }
+
   </style>
 </head>
 
 <body>
   <!-- Announcement banner -->
-  <div class="banner">
-    <div class="banner-inner">
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-        <span class="pill">✨ Available for: iOS • Web • Automation</span>
-        <span class="muted">Currently building: Cloud-backed iOS apps + modern web tooling.</span>
-      </div>
-      <div class="banner-actions">
-        <a class="link" href="#projects">View Projects →</a>
-      </div>
+<div class="banner">
+  <div class="banner-inner">
+    <div class="banner-left">
+      <span class="pill"><img class="app-icon" src="images/TheQuoteBookAppIcon2.PNG" alt="The Quote Book App icon" />Coming soon: The Quote Book App!</span>
+      <span class="muted">My first iOS app. Compatible with iPhone and iPad running iOS 26 or later.</span>
+    </div>
+    <div class="banner-actions">
+      <a class="link" href="#projects">View More Projects →</a>
     </div>
   </div>
+</div>
+
 
   <!-- Navbar -->
   <nav class="nav" id="siteNav">
@@ -559,7 +591,8 @@
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
         <a class="btn primary" href="#contact">Let’s Connect</a>
       </div>
     </div>
@@ -573,26 +606,26 @@
           <div class="kicker">📖 Building products that feel fun — scale and ship clean.</div>
           <h1>Hi, I’m Cassidi!</h1>
           <p class="subtitle">
-            A passionate and driven IT professional and student with a strong interest in software engineering.
-            I thrive on solving complex problems, building efficient systems, and continuously expanding my technical skill set.
+            Software-focused IT professional building scalable applications, workflow-driven systems, and cloud-integrated solutions.
+            I enjoy translating complex requirements into clean, efficient technical implementations.
           </p>
 
           <div class="hero-actions">
             <a class="btn primary" href="#projects">See My Work</a>
             <a class="btn secondary" href="#contact">Contact Me</a>
-            <a class="btn" href="https://github.com/cassidiedwards" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="btn" href="https://www.linkedin.com/in/cassidiedwards" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn" href="https://github.com/cassidiedwards" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/cassidi-edwards-904805302" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
 
           <div class="meta-row">
-            <span class="tag">SwiftUI • SwiftData • CloudKit</span>
-            <span class="tag">ASP.NET Core • PDFs</span>
-            <span class="tag">PowerPlatform • PowerShell</span>
-            <span class="tag">Azure • SQL Server</span>
+            <span class="tag">iOS &amp; Cloud Development</span>
+            <span class="tag">Workflow &amp; Platform Development</span>
+            <span class="tag">Automation &amp; Hybrid Systems</span>
+            <span class="tag">Power Platform • ASP.NET Core</span>
           </div>
 
           <div class="profile-image">
-            <img src="images/cassidi.jpeg" alt="Cassidi Edwards" />
+            <img src="images/cassidi.jpeg" alt="Cassidi Edwards" loading="lazy" />
           </div>
         </div>
 
@@ -604,21 +637,20 @@
 
           <div class="list">
             <div class="list-item">
-              <b>💡 PowerPlatform Development</b>
-              Building on-premises and cloud-based integrated solutions with Power Apps, Power Automate, and SharePoint
-              to deliver secure, scalable low-code applications that streamline business processes and unify data workflows.
+              <b>📱 iOS Application Development</b>
+              Built a cloud-integrated SwiftUI app from the ground up, including data modeling, state management, and TestFlight deployment.
             </div>
             <div class="list-item">
-              <b>🧩 Workflow Web Apps</b>
-              Forms, authentication, PDF generation, and email automation for real-world processes.
+              <b>⚙️ Platform &amp; Workflow Development</b>
+              Develop and customize Accela workflows, platform logic, and system integrations to deliver scalable, efficient enterprise solutions.
             </div>
             <div class="list-item">
-              <b>⚙️ Automation & Ops</b>
-              PowerShell/Power Automate scripts that reduce repetitive workload and improve reliability.
+              <b>💡 Power Platform Development</b>
+              Design and implement SharePoint, Power Apps, Power Automate workflows, and PowerShell automation—connecting on-premises and cloud systems to improve reliability.
             </div>
             <div class="list-item">
-              <b>📱 The Quote Book App</b>
-              CloudKit-backed iOS app for saving + sharing quotes and playing “Who Said That?”
+              <b>🔄 System Modernization &amp; Integration</b>
+              Develop and support legacy system migrations, ensuring data integrity, secure configuration, and minimal operational disruption.
             </div>
           </div>
 
@@ -626,7 +658,7 @@
 
           <div class="list-item">
             <b>Currently learning</b>
-            <span class="muted">I’m expanding my knowledge in security, servers, and data structures.</span>
+            <span class="muted">I’m expanding my knowledge in security, servers, and data structures. As well as working on Microsoft Full-Stack Developer Professional Certificate.</span>
           </div>
         </aside>
       </div>
@@ -645,6 +677,47 @@
 
       <div class="grid">
         <article class="card">
+          <h3>🏛️ Accela Workflow &amp; Code Development</h3>
+          <p>
+            Configured workflows, developed platform logic, integrated systems, and supported testing to deliver secure, efficient permitting solutions.
+          </p>
+          <div class="chips">
+            <span class="chip">Workflow Configuration</span>
+            <span class="chip">Expression / Script Logic</span>
+            <span class="chip">API Integrations</span>
+            <span class="chip">Stakeholder Collaboration</span>
+            <span class="chip">User Acceptance Testing</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>🗄️ Multiple Software Migrations</h3>
+          <p>
+            Led the analysis and migration of legacy on-premises and cloud systems to modern platforms, safeguarding data integrity, minimizing operational disruption, and ensuring secure configuration across environments.
+          </p>
+          <div class="chips">
+            <span class="chip">Data Migration</span>
+            <span class="chip">System Integration</span>
+            <span class="chip">Documentation</span>
+            <span class="chip">Requirements Analysis</span>
+            <span class="chip">Workflow Redesign</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>📚 Knowledge Base</h3>
+          <p>
+            A structured knowledge base system designed to organize information and surface answers quickly.
+          </p>
+          <div class="chips">
+            <span class="chip">Information Architecture</span>
+            <span class="chip">Search Optimization</span>
+            <span class="chip">System Documentation</span>
+            <span class="chip">Cloud-Based Platform</span>
+          </div>
+        </article>
+
+        <article class="card">
           <h3>📖 The Quote Book App (iOS)</h3>
           <p>
             Save quotes, share them to a feed with friends, and play a timed “Who Said That?” guessing game.
@@ -656,29 +729,12 @@
             <span class="chip">CloudKit</span>
             <span class="chip">OSLog</span>
           </div>
-          <div class="actions">
-            <a class="btn primary" href="#contact">Request TestFlight Invite or Code</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>📚 Knowledge Base</h3>
-          <p>
-            A structured knowledge base system designed to organize information and surface answers quickly.
-          </p>
-          <div class="chips">
-            <span class="chip">Information Architecture</span>
-            <span class="chip">Search</span>
-            <span class="chip">Automation</span>
-            <span class="chip">Cloud</span>
-          </div>
         </article>
 
         <article class="card">
           <h3>🐾 Kitty Ping Pong (Arduino)</h3>
           <p>
-            Arduino Uno R4 Minima project inspired by family ping-pong nights — wiring, LEDs, button inputs,
-            display outputs, and lots of C/C++ debugging.
+            Arduino Uno R4 Minima project inspired by family ping-pong nights — wiring, LEDs, button inputs, display outputs, and lots of C/C++ debugging.
           </p>
           <div class="chips">
             <span class="chip">Arduino</span>
@@ -696,7 +752,7 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <h2>About</h2>
+          <h2>About Me</h2>
           <p>IT + Applications Analyst with a love for building clean, friendly experiences.</p>
         </div>
       </div>
@@ -705,17 +761,17 @@
         <div class="card">
           <h3>What I do</h3>
           <p>
-            I build efficient, user-focused software systems that solve real problems.
-            Professionally, I develop web applications, automation solutions, and Microsoft 365 tools that streamline workflows and improve reliability.
-            I focus on clean architecture, scalable systems, and reducing manual effort through smart design.
+            I design and develop software systems that translate complex business requirements into scalable, maintainable technical solutions.
+            Professionally, I develop workflow-driven applications and data solutions using Power Platform, other cloud-based applications, and enterprise permitting systems.
+            My work includes developing and maintaining integrated forms, automation workflows, reporting systems (Power BI and Crystal Reports), and object-oriented applications that support operational efficiency and regulatory compliance.
+            I have led and contributed to platform modernization initiatives, including the migration of Accela from on-premises infrastructure to a SaaS environment, ensuring data integrity, system continuity, and secure configuration across departments.
+            My experience spans full lifecycle implementation — from requirements analysis and workflow design to testing, documentation, deployment, and post-launch support — with a focus on system reliability, scalability, and clean architecture.
           </p>
           <p class="muted">
-            Outside of work, I design and build iOS applications from the ground up — exploring cloud-backed data architecture, user experience,
-            and full product lifecycles to continuously strengthen my software development and engineering skill set.
+            Outside of my professional experience, I design and build iOS applications from the ground up — exploring cloud-backed data architecture, user experience, and full product lifecycles as part of my growth as a developer. I also enjoy creating Arduino-based projects, helping friends design websites for their businesses, and taking courses to stay current with emerging technologies and modern development practices.
           </p>
           <div class="actions">
             <a class="btn primary" href="#projects">View Projects</a>
-            <a class="btn secondary" href="#contact">Work With Me</a>
           </div>
         </div>
 
@@ -729,20 +785,20 @@
               <span>Process Evaluation • Solution Design • Stakeholder Collaboration</span>
             </div>
             <div class="skill-row">
-              Power Platform & Automation
-              <span>Power Apps • Power Automate • PowerShell</span>
+              Automation &amp; Integration
+              <span>PowerShell • On-Prem &amp; Cloud Integration • System Automation</span>
             </div>
             <div class="skill-row">
-              iOS Engineering
+              Platform &amp; Workflow Development
+              <span>Power Apps • Power Automate • PowerShell • Logic Development</span>
+            </div>
+            <div class="skill-row">
+              iOS &amp; Cloud Development
               <span>SwiftUI • SwiftData • CloudKit</span>
             </div>
             <div class="skill-row">
-              Web App Development
+              Web Application Development
               <span>ASP.NET Core • HTML • CSS • JavaScript</span>
-            </div>
-            <div class="skill-row">
-              Systems Architecture & Design
-              <span>Scalability • Reliability • UX</span>
             </div>
           </div>
 
@@ -750,7 +806,7 @@
 
           <div class="list-item">
             <b>Always learning</b>
-            <span class="muted">I’m continuously sharpening my skills through hands-on builds, feedback loops, and shipping real projects end-to-end.</span>
+            <span class="muted">I’m continuously sharpening my skills through hands-on builds, colaboration, and shipping real projects end-to-end.</span>
           </div>
         </div>
       </div>
@@ -763,28 +819,160 @@
       <div class="section-head">
         <div>
           <h2>Experience</h2>
-          <p>Show what you’ve done — this is written to be easy to customize fast.</p>
         </div>
       </div>
 
       <div class="grid">
         <article class="card" style="grid-column: span 12;">
-          <h3>Application Analyst • Software Development Focus</h3>
-          <p class="muted">Collier County BCC - Western Governors University.</p>
+          <h3>Applications Analyst</h3>
+          <p class="muted">Collier County BCC | 2025 – Present</p>
           <div class="chips">
-            <span class="chip">Agile / Scrum</span>
-            <span class="chip">System Maintenance</span>
-            <span class="chip">Automation</span>
-            <span class="chip">App Development</span>
+            <span class="chip">Reporting &amp; Analytics</span>
+            <span class="chip">Workflows &amp; Automation</span>
+            <span class="chip">Stakeholder Collaboration</span>
+            <span class="chip">Agile / Jira</span>
           </div>
-          <p>
-            • Built and maintained user-facing systems with a focus on reliability and usability.<br/>
-            • Automated routine tasks to reduce manual workload and improve consistency.<br/>
-            • Developed apps and tools that connect teams to information faster and reduce friction.
+
+          <ul class="bullets">
+            <li>Support ongoing system enhancements to meet evolving business and regulatory requirements.</li>
+            <li>Troubleshoot and resolve application, system, and integration issues across departments.</li>
+            <li>Support configuration and troubleshooting for CityView enterprise permitting system.</li>
+            <li>Provide application support for the Chameleon system, assisting with issue triage and resolution.</li>
+            <li>Manage development tickets and sprint tracking in Jira within Agile workflows.</li>
+            <li>Implement and optimize reporting solutions (Power BI, Crystal Reports) to support operational and executive decision-making.</li>
+            <li>Develop integrated data solutions using Power Apps, Power Automate, and Power BI to support operational processes.</li>
+            <li>Author technical documentation, workflow diagrams, and SOPs to ensure maintainability and knowledge transfer.</li>
+          </ul>
+        </article>
+
+        <article class="card" style="grid-column: span 12;">
+          <h3>Technician II – Permitting Systems</h3>
+          <p class="muted">Lee County BoCC | 2023 – 2025</p>
+          <div class="chips">
+            <span class="chip">SaaS Migration</span>
+            <span class="chip">Workflow Development</span>
+            <span class="chip">Scripting &amp; Automation</span>
+            <span class="chip">System Integration</span>
+            <span class="chip">Reporting Development</span>
+          </div>
+
+          <ul class="bullets">
+            <li>Served as project lead for the migration of Accela from on-premises infrastructure to a SaaS platform, ensuring data integrity and minimal operational disruption.</li>
+            <li>Developed and customized Accela workflows, platform logic, and object-oriented applications to improve scalability and maintainability.</li>
+            <li>Implemented and supported DigEplan digital plan review solutions in collaboration with cross-functional stakeholders.</li>
+            <li>Designed and maintained Crystal Reports integrated with enterprise permitting systems.</li>
+            <li>Administered system access, roles, and permissions across 11 departments, maintaining secure and compliant configurations.</li>
+            <li>Coordinated with vendors and internal teams to evaluate, deploy, and enhance enterprise software platforms.</li>
+            <li>Provided advanced troubleshooting for application, hardware, and network-related issues.</li>
+            <li>Collaborated with the IT applications team on ASP.NET Core MVC applications, converting PDF-based processes into web applications with PDF generation and automated email delivery.</li>
+            <li>Developed a centralized knowledge base solution in partnership with cross-functional teams (including IT), improving structured documentation and quick access to multiple department information.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Education</h2>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card" style="grid-column: span 12;">
+          <h3>Western Governors University (Expected Graduation 09/2026)</h3>
+          <p class="muted">Bachelor of Science (BS), Information Technology</p>
+          <ul class="bullets">
+            <li>Scripting and Programming, Networking and Security, Systems and Services, Data Management, Business of IT.</li>
+            <li>HTML, CSS, Information Systems, Computer Hardware, Computer Software, Network Troubleshooting.</li>
+          </ul>
+        </article>
+
+        <article class="card" style="grid-column: span 12;">
+          <h3>Florida SouthWestern State College (2024)</h3>
+          <p class="muted">
+            Bachelor of Applied Science (BAS), Supervision and Management, General<br>
+            <i>Concentration: Information Technology and Management</i>
           </p>
-          <div class="actions">
-            <a class="btn" href="#" target="_blank" rel="noreferrer">Resume (PDF)</a>
-            <a class="btn secondary" href="#contact">Ask for References</a>
+          <ul class="bullets">
+            <li>Financial Accounting, Managerial Accounting, Financial Management, Retail Logistics.</li>
+            <li>Computer Applications for Business, IT Resources and Management, Technology in the Public Sector.</li>
+            <li>Introduction to Computer Programming (Python), Computer Hardware, Computer Software.</li>
+          </ul>
+        </article>
+
+        <article class="card" style="grid-column: span 12;">
+          <h3>American Musical and Dramatic Academy (2018)</h3>
+          <p class="muted">Conservatory Studio: Acting for Stage, Film &amp; TV</p>
+          <ul class="bullets">
+            <li>Acting in Film, TV, Media, and Stage; stage combat (unarmed, sword/quarterstaff), impact and fall techniques.</li>
+            <li>Jazz, Theatrical, and Ballet dance.</li>
+            <li>Musical theater, vocal, piano and guitar performance, and improvisation.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section" id="certifications">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Certifications</h2>
+        </div>
+      </div>
+
+      <div class="grid">
+        <article class="card" style="grid-column: span 12;">
+          <h3>In progress: Microsoft Full-Stack Developer Professional Certificate</h3>
+          <p class="muted">Microsoft • Coursera </p>
+          <div class="chips">
+            <span class="chip">C# • OOP</span>
+            <span class="chip">SQL • Databases</span>
+            <span class="chip">ASP.NET • Web APIs</span>
+            <span class="chip">.NET</span>
+            <span class="chip">Azure DevOps</span>
+          </div>
+        </article>
+        <article class="card" style="grid-column: span 12;">
+          <h3>CompTIA IT Operations Specialist (CIOS)</h3>
+          <p class="muted">CompTIA A+ and Network+</p>
+          <div class="chips">
+            <span class="chip">System Administration</span>
+            <span class="chip">Network Management</span>
+            <span class="chip">Troubleshooting</span>
+            <span class="chip">Cloud &amp; Virtualization</span>
+          </div>
+          <ul class="bullets">
+            <li>A+ Verification ID: 2MTG42N6H2RE12WR</li>
+            <li>Network+ Verification ID: e880f20cd3a34d379b61a1c0aa87e44e</li>
+            <li>Expiration: November 2028</li>
+          </ul>
+        </article>
+
+        <article class="card" style="grid-column: span 12;">
+          <h3>ITIL 4 Foundation Certificate in IT Service Management</h3>
+          <p class="muted">AXELOS Global Best Practice</p>
+          <div class="chips">
+            <span class="chip">IT Service Management</span>
+            <span class="chip">Change Management</span>
+            <span class="chip">Service Value System</span>
+          </div>
+        </article>
+
+        <article class="card" style="grid-column: span 12;">
+          <h3>Foundations of Leadership</h3>
+          <p class="muted">The National Society of Leadership and Success (NSLS)</p>
+          <div class="chips">
+            <span class="chip">SMART Goals</span>
+            <span class="chip">Emotional Intelligence</span>
+            <span class="chip">Communication</span>
+            <span class="chip">Decision-Making</span>
+            <span class="chip">Team Motivation</span>
           </div>
         </article>
       </div>
@@ -797,7 +985,7 @@
       <div class="section-head">
         <div>
           <h2>Contact</h2>
-          <p>Want to collaborate, test The Quote Book App, or talk cloud-backed apps? Send a message.</p>
+          <p>Want to collaborate, test, or talk technology? Send a message.</p>
         </div>
       </div>
 
@@ -824,7 +1012,7 @@
             <div class="list-item">
               <b>LinkedIn</b>
               <span class="muted">
-                <a href="https://linkedin.com/in/cassidi-edwards-904805302" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/cassidi-edwards-904805302/" target="_blank" rel="noopener noreferrer">
                   linkedin.com/in/cassidi-edwards-904805302
                 </a>
               </span>
@@ -845,7 +1033,7 @@
             </div>
             <div class="field">
               <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Tell me what you’re building (or what you want to test!)"></textarea>
+              <textarea id="message" name="message" placeholder="I can't wait to speak with you!"></textarea>
             </div>
             <button class="btn primary" type="submit">Send Email</button>
             <p class="fine">No data is stored on this site — it just opens your email client with a pre-filled message.</p>
