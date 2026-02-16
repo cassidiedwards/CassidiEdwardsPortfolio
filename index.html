@@ -522,21 +522,37 @@
       .card{ grid-column: span 12; }
       .skill-row { grid-template-columns: 1fr; }
 
-      /* collapse nav into menu */
-      .nav-links{ display: none; }
-      .menu-btn{ display: inline-flex; align-items: center; gap: 8px; }
+      /* allow menu to drop below the top row */
+      .nav-inner{
+        flex-wrap: wrap;
+      }
 
-      .nav.open .nav-links{
-        display: flex;
+      /* collapse nav into menu */
+      .nav-links{
+        display: none;
+        width: 100%;
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
-        width: 100%;
-        padding: 12px 0 0;
+        padding-top: 12px;
       }
+
+      .menu-btn{
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .nav.open .nav-links{
+        display: flex;
+      }
+
       .nav.open .nav-inner{ align-items: flex-start; }
+
       .nav.open .nav-links a{ width: 100%; }
-      .nav.open .nav-links .btn{ width: 100%; justify-content: center; }
+
+      .nav.open .nav-links .btn{
+        justify-content: center;
+      }
     }
 
     @media (max-width: 600px){
@@ -550,9 +566,8 @@
     }
 
     @media (min-width: 700px){
-  .app-icon{ width: 32px; height: 32px; border-radius: 10px; }
-    }
-
+    .app-icon{ width: 32px; height: 32px; border-radius: 10px; }
+      }
   </style>
 </head>
 
