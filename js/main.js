@@ -1,7 +1,7 @@
-// Footer year
+// Footer year - maybe move into Quote Book App Overview?
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Mobile menu
+// Mobile menu - CSS to delete default
 const nav = document.getElementById("siteNav");
 const btn = document.getElementById("menuBtn");
 
@@ -19,7 +19,7 @@ document.getElementById("navLinks")?.addEventListener("click", (e) => {
   }
 });
 
-// Contact form -> mailto
+// Contact form -> mailto (someone's default mail service)
 const form = document.getElementById("contactForm");
 form?.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -28,7 +28,7 @@ form?.addEventListener("submit", (e) => {
   const message = document.getElementById("message").value.trim();
 
   const subject = encodeURIComponent(
-    `Portfolio message from ${name || "Someone"}`,
+    `New portfolio message from ${name || "Someone"}`,
   );
   const body = encodeURIComponent(
     `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n`,
