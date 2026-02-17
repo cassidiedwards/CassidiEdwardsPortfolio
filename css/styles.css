@@ -1,4 +1,4 @@
-
+/* Start */
     :root{
       --primary: #6C63FF;
       --secondary: #FFB703;
@@ -164,6 +164,7 @@
       border-color: rgba(255,183,3,0.35);
     }
 
+/* Remove device default menu - this fixes Apple "blue" look and replaced it with the primary purple color */
     .menu-btn {
       display: none;
 
@@ -567,6 +568,7 @@
       }
     }
 
+    /* Format my picture */
     @media (max-width: 600px){
       .profile-image img{
         width: 210px;
