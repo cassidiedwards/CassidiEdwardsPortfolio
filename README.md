@@ -9,6 +9,7 @@ Throughout development, I deepened my understanding of:
 - SEO metadata configuration
 - Open Graph and social media preview metadata
 - Clean UI styling and brand consistency
+
 This project also reflects who I am beyond my professional role — incorporating my personal aesthetic, creative interests, and the projects I build outside of my 9-5.
 
 ---
